@@ -2,7 +2,10 @@
 
 sudo ./twistcli sandbox -u $TL_USER -p $TL_PASS --address https://$TL_CONSOLE --output-file "sandbox.json" --analysis-duration 1m itresoldi/evilpetclinic:latest
 
-if $? == 0 then
+echo "Exit status is"
+echo $?
+
+if [ $? = 0 ] then
    echo "Image Vulnerability scan passed!"
    exit 0
 else
