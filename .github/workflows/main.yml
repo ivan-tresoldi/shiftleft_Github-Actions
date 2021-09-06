@@ -13,6 +13,7 @@ jobs:
           BYPASS_OSS_LICENSE: 0
           BYPASS_IMAGESCAN: 0
           BYPASS_WF: 0
+          BYPASS_SANDBOX: 1
     steps:
     
       - name: Checkout
@@ -58,8 +59,8 @@ jobs:
       - name: Scan Image for Malware using Wildfire
         run: bash ./files/malwareCheck.sh
         
-      - name: Sandbox Runtime Scanning of Image
-        run: bash ./files/sandboxscan.sh
+    # - name: Sandbox Runtime Scanning of Image
+    #   run: bash ./files/sandboxscan.sh
         
       - name: Run Checkov action
         id: checkov
