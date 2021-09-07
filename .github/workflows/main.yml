@@ -46,7 +46,7 @@ jobs:
         with:
           api-key: ${{ secrets.BRIDGECREW_API_KEY }}
           directory: ./files
-          soft_fail: false # optional: do not return an error code if there are failed checks
+          soft_fail: true # optional: do not return an error code if there are failed checks
           framework: kubernetes # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
           quiet: true
           output_format: github_failed_only # optional: the output format, one of: cli, json, junitxml, github_failed_only
