@@ -8,7 +8,8 @@ jobs:
     env:
           TL_USER: ${{ secrets.TL_USER }}
           TL_PASS: ${{ secrets.TL_PASS }}
-          TL_CONSOLE: ${{ secrets.TL_CONSOLE }} 
+          TL_CONSOLE: ${{ secrets.TL_CONSOLE }}
+          BC_APIKEY: ${{ secrets.BRIDGECREW_API_KEY }}
           BYPASS_REPOSCAN: 0
           BYPASS_OSS_LICENSE: 0
           BYPASS_IMAGESCAN: 0
@@ -44,8 +45,9 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
+          api-key: BC_APIKEY
           directory: ./files
-          soft_fail: true # optional: do not return an error code if there are failed checks
+          soft_fail: false # optional: do not return an error code if there are failed checks
           framework: kubernetes # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
           quiet: true
           output_format: github_failed_only # optional: the output format, one of: cli, json, junitxml, github_failed_only
