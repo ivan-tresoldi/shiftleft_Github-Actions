@@ -14,6 +14,8 @@ jobs:
           BYPASS_IMAGESCAN: 0
           BYPASS_WF: 0
           BYPASS_SANDBOX: 0
+          PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+          GKE_CLUSTER:  itresoldi-gke-pcc
     steps:
     
       - name: Checkout
@@ -53,10 +55,10 @@ jobs:
           log_level: WARNING # optional: set log level. Default WARNING
           
       - name: Deploy evilpetclinic Application
-        run: bash files/exec.sh deploy.sh
+        run: bash ./deploy.sh
         
       - name: Execute Runtime attacks
-        run: bash files/exec.sh runtime_attacks.sh
+        run: bash ./runtime_attacks.sh
           
       - name: Execute WAAS attacks
-        run: bash files/exec.sh waas_attacks.sh
+        run: bash ./waas_attacks.sh
