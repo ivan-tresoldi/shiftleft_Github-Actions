@@ -22,8 +22,7 @@ jobs:
         uses: actions/checkout@v2
     
       - name: twistcli download
-        # run: curl -L -k -u $TL_USER:$TL_PASS "https://$TL_CONSOLE/api/v1/util/twistcli" > twistcli; chmod a+x twistcli
-        run: curl --progress-bar -L -k --header "authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJncm91cHMiOm51bGwsInJvbGVQZXJtcyI6W1syNTUsMjU1LDI1NSwyNTUsMjU1LDEyNywxXSxbMjU1LDI1NSwyNTUsMjU1LDI1NSwxMjcsMV1dLCJzZXNzaW9uVGltZW91dFNlYyI6MTgwMCwiZXhwIjoxNjQ5NjAzMTYxLCJpc3MiOiJ0d2lzdGxvY2sifQ.sHdjmf1V1SDmvPB9JkOP7ulfMauUz9M4apZAf40TYBc" https://console.prismacloud.local/api/v1/util/twistcli > twistcli; chmod a+x twistcli;
+        run: bash ./files/download_twistcli.sh
     
       - name: Repo Vulnerability scan 
         run: bash ./files/repoScan.sh
