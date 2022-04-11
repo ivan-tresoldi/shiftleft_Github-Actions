@@ -1,7 +1,6 @@
 name: Prisma Cloud Shift Left demo
 on: [ pull_request ]
 
-
 jobs:
   prisma_cloud_job:
     runs-on: ubuntu-latest
@@ -34,29 +33,8 @@ jobs:
       - name: Scan Image for vulnerabilities
         run: bash ./files/scanImage.sh
    
-
-    #  - name: IaC scan of files in the repository
-    #    uses: prisma-cloud-shiftleft/iac-scan-action@v1
-    #    id: iac-scan
-    #    with:
-    #      prisma_api_url: 'https://api.prismacloud.io'
-    #      access_key: ${{ secrets.PRISMA_CLOUD_ACCESS_KEY }}
-    #      secret_key: ${{ secrets.PRISMA_CLOUD_SECRET_KEY }}
-    #      asset_name: 'shiftleft-github-actions'
-    #      template_type: 'K8S'
-    #      failure_criteria: High:3,Medium:3,Low:10,Operator:or
-    #      scan_path: ./files    
-      
-    #  - name: Upload scan result artifact
-    #    uses: actions/upload-artifact@v2
-    #    if: success() || failure()
-    #    with:
-    #      name: iac_scan_result
-    #      path: ${{ steps.iac-scan.outputs.iac_scan_result_path }}
-      
       - name: Scan Image for Malware using Wildfire
         run: bash ./files/malwareCheck.sh
-        
         
       - name: Run Bridgecrew action
         id: Bridgecrew
